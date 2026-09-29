@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Pic Photo Studio | Customer Reviews & Ratings</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modules.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <div class="container">
+        <a href="home.html">
+          <img src="images/logo.png" alt="Self-Pic Self Photo Studio" class="header-logo">
+        </a>
+        <div class="header-tagline">Private Self-Shoot Photo Studio</div>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <div class="container site-nav-inner">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="packages.html" class="nav-link">Packages & Rates</a>
+        <a href="booking.html" class="nav-link">Book Reservation</a>
+        <a href="reviews.html" class="nav-link active">Reviews & Ratings</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+
+      <section class="section-title-wrap text-center" style="margin-bottom: 28px;">
+        <span class="section-label">Verified Client Feedback</span>
+        <h1 style="margin-top: 8px;">REVIEWS & RATINGS</h1>
+        <p class="text-muted">Real experiences from clients across our Sta. Maria, Muzon SJDM, and Pandi Bulacan branches.</p>
+      </section>
+
+      <section class="reviews-hero-card">
+        
+        <div style="text-align: center; border-right: 1px solid var(--color-gray-mid); padding-right: 24px;">
+          <div class="rating-score-large" id="ratingScore">4.9</div>
+          <div class="stars-gold" id="ratingStars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px;">
+            Overall Studio Rating
+          </div>
+          <div class="text-muted" style="font-size: 0.8rem; margin-top: 2px;">
+            Based on <strong id="ratingCount">340+</strong> verified shoot sessions
+          </div>
+        </div>
+
+        <div class="rating-breakdown-col" id="ratingBreakdown"></div>
+
+        <div style="text-align: center;">
+          <div style="font-size: 0.95rem; font-weight: 800; margin-bottom: 6px;">
+            Had a session with us?
+          </div>
+          <p class="text-muted" style="font-size: 0.82rem; max-width: 200px; margin-bottom: 14px;">
+            Share your photo shoot experience and help fellow Bulakeños choose their package.
+          </p>
+          <button type="button" class="btn btn-primary" id="openReview" style="cursor: pointer; width: 100%;">
+            + Write a Review
+          </button>
+        </div>
+
+      </section>
+
+      <section class="reviews-filter-bar">
+        <div>
+          <span style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; margin-right: 10px;">Filter Branch:</span>
+          <div class="filter-btn-group" id="branchFilterGroup" style="display: inline-flex;">
+            <button class="filter-pill-btn active" data-branch="all">All Branches</button>
+            <button class="filter-pill-btn" data-branch="Sta. Maria Bulacan">Sta. Maria</button>
+            <button class="filter-pill-btn" data-branch="Muzon, San Jose Del Monte">Muzon SJDM</button>
+            <button class="filter-pill-btn" data-branch="Pandi Bulacan">Pandi</button>
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; margin-right: 10px;">Filter Rating:</span>
+          <div class="filter-btn-group" id="ratingFilterGroup" style="display: inline-flex;">
+            <button class="filter-pill-btn active" data-rating="all">All</button>
+            <button class="filter-pill-btn" data-rating="5">5 Stars</button>
+            <button class="filter-pill-btn" data-rating="4">4 Stars</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews-grid" id="reviewsContainer">
+        </section>
+
+      <section class="landing-cta-banner">
+        <h2>READY FOR YOUR PRIVATE SHOOT?</h2>
+        <p>Book your preferred branch and package in under 2 minutes with our 6-step sequential booking wizard.</p>
+        <a href="booking.html" class="btn btn-secondary btn-lg" style="background: #fff; color: #000; border-color: #fff;">
+          Book Online Reservation &raquo;
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="review-modal-overlay" id="reviewModal">
+    <div class="review-modal">
+      <div class="review-modal-header">
+        <h3 style="margin: 0;">WRITE A STUDIO REVIEW</h3>
+        <button type="button" id="closeReview" class="btn-sm" style="cursor: pointer; border: 1px solid #000; background: #fff;">&times;</button>
+      </div>
+
+      <form id="reviewForm">
+        
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Your Name (Required)</label>
+          <input type="text" id="revName" required placeholder="e.g. Maria Santos" style="width: 100%;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Email Address (Required, Private)</label>
+          <input type="email" id="revEmail" required placeholder="e.g. maria@gmail.com" style="width: 100%;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Booking Reference Code (Optional)</label>
+          <input type="text" id="revRef" placeholder="e.g. SP-894210" style="width: 100%;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Studio Branch Visited</label>
+          <select id="revBranch" style="width: 100%; padding: 8px 12px; border: 1px solid #000;">
+            <option value="Sta. Maria Bulacan">Sta. Maria Bulacan</option>
+            <option value="Muzon, San Jose Del Monte">Muzon, San Jose Del Monte</option>
+            <option value="Pandi Bulacan">Pandi Bulacan</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Package Used</label>
+          <select id="revPackage" style="width: 100%; padding: 8px 12px; border: 1px solid #000;">
+            <option value="SOLO 199">SOLO 199 (10 mins)</option>
+            <option value="SOLO 249" selected>SOLO 249 (20 mins)</option>
+            <option value="DUO 249">DUO 249 (10 mins)</option>
+            <option value="DUO 399">DUO 399 (25 mins)</option>
+            <option value="TRIO 349">TRIO 349 (10 mins)</option>
+            <option value="TRIO 499">TRIO 499 (25 mins)</option>
+            <option value="GRUPO 449">GRUPO 449 (10 mins)</option>
+            <option value="GRUPO 599">GRUPO 599 (25 mins)</option>
+            <option value="RENT DUO 799">RENT DUO 799 (1 Hour)</option>
+            <option value="RENT GRUPO 1199">RENT GRUPO 1199 (1 Hour)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Rating (1 to 5 Stars)</label>
+          <div class="star-rating-selector" id="starPicker">
+            <span class="star-item selected" data-value="1">&#9733;</span>
+            <span class="star-item selected" data-value="2">&#9733;</span>
+            <span class="star-item selected" data-value="3">&#9733;</span>
+            <span class="star-item selected" data-value="4">&#9733;</span>
+            <span class="star-item selected" data-value="5">&#9733;</span>
+          </div>
+          <input type="hidden" id="revStars" value="5">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Review Comments (Required)</label>
+          <textarea id="revComment" required rows="3" placeholder="Tell us about the studio atmosphere, lighting, prints, and your experience..." style="width: 100%; padding: 8px 12px; border: 1px solid #000;"></textarea>
+        </div>
+
+        <p id="reviewMessage" role="alert" style="display: none; font-weight: 700; margin-bottom: 12px;"></p>
+
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 12px; cursor: pointer; width: 100%;">
+          Submit Review & Rating &raquo;
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <img src="images/logo.png" alt="Self-Pic Logo" class="footer-logo">
+      <p class="footer-copy">
+        Self-Pic Photo Studio &copy; 2026-2027. Branches in Sta. Maria, Muzon San Jose Del Monte, and Pandi Bulacan.<br>
+        Booking valid from September 1, 2026 to September 1, 2027 &bull; GCash Accepted
+      </p>
+      <div style="margin-top: 10px;">
+        <a href="admin/login.html" style="color: #777; font-size: 0.75rem; text-decoration: underline;">Staff & Administrator Login Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/pages/review-page.js"></script>
+</body>
+</html>
