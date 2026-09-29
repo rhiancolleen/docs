@@ -1,0 +1,17 @@
+[hidden] { display: none !important; }
+.module-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 12px 22px;
+  border-radius: var(--border-radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-card-hover);
+  z-index: 1000;
+  max-width: 90vw;
+  text-align: center;
+}
