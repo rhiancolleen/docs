@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Pic Photo Studio | Official Reservation Receipt</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modules.css">
+</head>
+<body>
+
+  <header class="site-header no-print">
+    <div class="header-top">
+      <div class="container">
+        <a href="home.html">
+          <img src="images/logo.png" alt="Self-Pic Self Photo Studio" class="header-logo">
+        </a>
+        <div class="header-tagline">Private Self-Shoot Photo Studio</div>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <div class="container site-nav-inner">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="packages.html" class="nav-link">Packages & Rates</a>
+        <a href="booking.html" class="nav-link">Book Reservation</a>
+        <a href="reviews.html" class="nav-link">Reviews & Ratings</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+
+      <section class="receipt-generator no-print" id="generator" aria-labelledby="genTitle">
+        <span class="section-label">Create a Receipt</span>
+        <h2 id="genTitle">RESERVATION DETAILS</h2>
+        <p class="text-muted">Fill in the session details to generate an official reservation receipt with a barcode.</p>
+
+        <form id="receiptForm" novalidate>
+          <div class="gen-grid">
+            <div class="form-group">
+              <label class="input-label" for="genPackage">Package</label>
+              <select id="genPackage"></select>
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genBranch">Studio Branch</label>
+              <select id="genBranch"></select>
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genDate">Shoot Date</label>
+              <input type="date" id="genDate" required>
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genTime">Shoot Time</label>
+              <input type="time" id="genTime" min="10:00" max="18:30" required>
+              <p class="gen-hint">Open daily 10:00 AM to 7:00 PM</p>
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genName">Client Name</label>
+              <input type="text" id="genName" required placeholder="e.g. Maria Santos" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genEmail">Email Address</label>
+              <input type="email" id="genEmail" required placeholder="e.g. maria@gmail.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genPhone">Mobile Number (+63)</label>
+              <input type="tel" id="genPhone" required placeholder="917 555 0199" autocomplete="tel-national">
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genPayment">Payment</label>
+              <select id="genPayment">
+                <option value="half">50% Downpayment</option>
+                <option value="full">Full Payment</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genExtraTime">Extra Time (+10 mins, &#8369;100 each)</label>
+              <input type="number" id="genExtraTime" min="0" max="6" step="1" value="0">
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genExtraPax">Extra Persons (&#8369;50 each)</label>
+              <input type="number" id="genExtraPax" min="0" max="5" step="1" value="0">
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genBackdrops">Backdrops (included)</label>
+              <input type="text" id="genBackdrops" placeholder="Storm, Abstract Pink, Cloud">
+            </div>
+            <div class="form-group">
+              <label class="input-label" for="genExtraBackdrops">Extra Backdrops (&#8369;100 each)</label>
+              <input type="text" id="genExtraBackdrops" placeholder="Leave blank if none">
+            </div>
+            <div class="form-group gen-wide">
+              <label class="gen-check"><input type="checkbox" id="genSpotlight"> Add Directional Studio Spotlight (&#8369;200)</label>
+            </div>
+            <div class="form-group gen-wide">
+              <label class="input-label" for="genNotes">Special Notes (optional)</label>
+              <textarea id="genNotes" rows="2" placeholder="Anything the studio should know?"></textarea>
+            </div>
+          </div>
+          <p id="genError" class="gen-error" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary btn-lg" style="cursor: pointer;">Generate Receipt &raquo;</button>
+        </form>
+      </section>
+
+      <article class="receipt-wrapper" id="receiptCard">
+
+        <div class="receipt-header">
+          <img src="images/logo.png" alt="Self-Pic Photo Studio" class="receipt-header-logo">
+          <h2 style="color: #ffffff; margin-top: 6px; font-size: 1.5rem;">OFFICIAL RESERVATION RECEIPT</h2>
+          <div style="font-size: 0.85rem; color: #bbbbbb; letter-spacing: 0.1em; text-transform: uppercase;">
+            Self-Pic Self Photo Studio &bull; Philippines
+          </div>
+          <div class="receipt-barcode" id="receiptBarcode">* SP-894210 *</div>
+          <div style="font-size: 0.8rem; color: #cccccc;">
+            Status: <span class="highlight-badge" style="background-color: #ffffff; color: #000000; font-weight: 800;">CONFIRMED / RESERVED</span>
+          </div>
+        </div>
+
+        <div class="receipt-body">
+
+          <table class="receipt-details-table">
+            <tr>
+              <td><strong>Reference No:</strong></td>
+              <td id="rcptRef">SP-894210</td>
+            </tr>
+            <tr>
+              <td><strong>Booking Date:</strong></td>
+              <td id="rcptCreated">September 17, 2026</td>
+            </tr>
+            <tr>
+              <td><strong>Studio Branch:</strong></td>
+              <td id="rcptBranch">Sta. Maria Bulacan</td>
+            </tr>
+            <tr>
+              <td><strong>Scheduled Shoot Date:</strong></td>
+              <td id="rcptDate">September 20, 2026</td>
+            </tr>
+            <tr>
+              <td><strong>Scheduled Shoot Time:</strong></td>
+              <td id="rcptTime">02:00 PM</td>
+            </tr>
+            <tr>
+              <td><strong>Total Time in Studio:</strong></td>
+              <td id="rcptTotalTime" style="font-weight: 800; color: #000000;">20 mins</td>
+            </tr>
+          </table>
+
+          <hr class="perforated-line">
+
+          <div class="section-label" style="font-size: 0.7rem;">Customer Details</div>
+          <table class="receipt-details-table" style="margin-top: 8px;">
+            <tr>
+              <td>Client Name:</td>
+              <td id="rcptName">Maria Santos</td>
+            </tr>
+            <tr>
+              <td>Email Address:</td>
+              <td id="rcptEmail">mariasantos@gmail.com</td>
+            </tr>
+            <tr>
+              <td>Contact Number:</td>
+              <td id="rcptPhone">+63 917 555 0199</td>
+            </tr>
+            <tr id="rcptNotesRow" style="display:none;">
+              <td>Special Notes:</td>
+              <td id="rcptNotes">&mdash;</td>
+            </tr>
+          </table>
+
+          <hr class="perforated-line">
+
+          <div class="section-label" style="font-size: 0.7rem;">Session Itemization</div>
+          <table class="receipt-details-table" style="margin-top: 8px;">
+            <tr>
+              <td>
+                <strong id="rcptPackage">SOLO 249</strong><br>
+                <small class="text-muted" id="rcptInclusions">1 pax &bull; 20 mins shoot &bull; 3 backdrops &bull; 3R solo + 3R quadro print &bull; ALL soft copies</small>
+              </td>
+              <td id="rcptPackagePrice">₱249 PHP</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Selected Backdrops:</strong><br>
+                <small class="text-muted" id="rcptBackdrops">Storm, Abstract Pink, Cloud</small>
+              </td>
+              <td>Included</td>
+            </tr>
+            <tr>
+              <td>
+                Additional Shoot Time:<br>
+                <small class="text-muted" id="rcptExtraTime">None (+0 mins)</small>
+              </td>
+              <td id="rcptExtraTimeCost">₱0 PHP</td>
+            </tr>
+            <tr>
+              <td>
+                Additional Person (Grupo):<br>
+                <small class="text-muted" id="rcptExtraPax">None (+0 pax)</small>
+              </td>
+              <td id="rcptExtraPaxCost">₱0 PHP</td>
+            </tr>
+            <tr>
+              <td>
+                Additional Backdrop Colors:<br>
+                <small class="text-muted" id="rcptExtraBackdrops">None</small>
+              </td>
+              <td id="rcptExtraBackdropsCost">₱0 PHP</td>
+            </tr>
+            <tr id="rcptHardCopiesRow" style="display: none;">
+              <td>
+                Additional Hard Copy Prints:<br>
+                <small class="text-muted" id="rcptHardCopies">None</small>
+              </td>
+              <td id="rcptHardCopiesCost">₱0 PHP</td>
+            </tr>
+            <tr id="rcptSpotlightRow" style="display: none;">
+              <td>
+                Directional Studio Spotlight:<br>
+                <small class="text-muted">Theatrical portrait spotlight</small>
+              </td>
+              <td id="rcptSpotlightCost">₱200 PHP</td>
+            </tr>
+          </table>
+
+          <div class="receipt-total-box">
+            <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 900; margin-bottom: 8px;">
+              <span>TOTAL EXPENSE:</span>
+              <span id="rcptTotal">₱249 PHP</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #333; margin-bottom: 6px;">
+              <span>Payment Method:</span>
+              <span><strong>GCash</strong></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 1rem; color: #000; font-weight: 700; margin-bottom: 6px;">
+              <span id="rcptPaymentType">Amount Paid (50% Downpayment):</span>
+              <span id="rcptAmountPaid">₱125 PHP</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 1.05rem; font-weight: 800; border-top: 1px dashed #999; padding-top: 8px; color: #000000;">
+              <span>Remaining Balance Due On-Site:</span>
+              <span id="rcptBalanceDue">₱124 PHP</span>
+            </div>
+          </div>
+
+          <div id="rcptReminderBox" class="alert-box alert-warning">
+            <div class="alert-icon">&#9888;</div>
+            <div class="alert-content">
+              <h4>ON-SITE PAYMENT REMINDER</h4>
+              <p>
+                As you opted for <strong>50% Downpayment</strong>, your slot is officially reserved!
+                Please note that your remaining balance of <strong id="rcptReminderBalance">₱124 PHP</strong>
+                must be paid <strong>before entering the photo shoot room on-site</strong> at the branch.
+              </p>
+            </div>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #444; margin-top: 20px; line-height: 1.5;">
+            <strong>Studio Reminders & Policies:</strong>
+            <ul style="padding-left: 20px; margin-top: 6px;">
+              <li>Please arrive at least <strong>10 to 15 minutes before</strong> your scheduled time slot to allow for vanity prep and backdrop briefing.</li>
+              <li>Outfit changes are welcome within your designated shoot duration.</li>
+              <li>Hard copy prints will be printed and packed right after your session.</li>
+              <li>Google Drive link for digital soft copies will be sent to your registered email address.</li>
+            </ul>
+          </div>
+
+          <br>
+
+          <div class="receipt-footer">
+            Thank you for choosing <strong>Self-Pic Photo Studio</strong>!<br>
+            For rescheduling or inquiries, contact us at <strong>0917-888-7353</strong> or visit any of our branches in Bulacan.
+          </div>
+
+        </div>
+
+      </article>
+
+      <div class="btn-print-actions no-print" style="text-align: center; margin-top: 32px;">
+        <button onclick="window.print()" class="btn btn-primary btn-lg" style="cursor: pointer;">
+          Print or Save Receipt (PDF)
+        </button>
+        &nbsp;&nbsp;
+        <a href="reviews.html" id="rcptReviewBtn" class="btn btn-primary btn-lg">Write a Review</a>
+        &nbsp;&nbsp;
+        <button type="button" id="newReceipt" class="btn btn-secondary btn-lg" style="cursor: pointer;">Create Another Receipt</button>
+        &nbsp;&nbsp;
+        <a href="home.html" class="btn btn-secondary btn-lg">Return to Home</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer no-print">
+    <div class="container footer-content">
+      <img src="images/logo.png" alt="Self-Pic Logo" class="footer-logo">
+      <p class="footer-copy">
+        Self-Pic Photo Studio &copy; 2026-2027. Branches in Sta. Maria, Muzon San Jose Del Monte, and Pandi Bulacan.<br>
+        Booking valid from September 1, 2026 to September 1, 2027 &bull; GCash Accepted
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/pages/receipt-page.js"></script>
+
+</body>
+</html>
